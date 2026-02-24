@@ -9,38 +9,79 @@ function getComputerChoice() {
     }
 }
 
-function getHumanChoice() {
-    return prompt("Enter Rock, Paper, or Scissors")
+function playRound(hc, cc) {
+    hc = hc.toLowerCase()
+    if (hc === cc) {
+        resultsP.textContent = "You tied"
+    } else if(hc === "rock" && cc === "scissors") {
+        resultsP.textContent = "You win"
+        humanScore++
+    } else if(hc === "paper" && cc === "rock") {
+        resultsP.textContent = "You win"
+        humanScore++
+    } else if(hc === "scissors" && cc === "paper") {
+        resultsP.textContent = "You win"
+        humanScore++
+    } else {
+        resultsP.textContent = "You lose"
+         computerscore++
+    }
+    console.log("Human score: " + humanScore + ", Computer Score: " + computerscore)
+    score.textContent = humanScore + " - " + computerscore
+
+    if (humanScore >= 5) {
+        overlayText.textContent = "YOU WIN 🎉";
+        overlay.classList.remove("hidden");
+        overlay.classList.add("show");
+    } else if (computerscore >= 5) {
+        overlayText.textContent = "YOU LOSE 💻";
+        overlay.classList.remove("hidden");
+        overlay.classList.add("show");
+    }
 }
 
+function reset() {
+    score.textContent = "0 - 0"
+    resultsP.textContent = "Press a button to start!"
+    humanScore = 0
+    computerscore = 0
+}
 
+let humanScore = 0
+let computerscore = 0
+    
+const rockB = document.getElementById("rock")
+const paperB = document.getElementById("paper")
+const scissorsB = document.getElementById("scissors")
 
+const resultsP = document.getElementById("results")
+const score = document.getElementById("score")
+const restart = document.getElementById("restart")
 
+const overlay = document.getElementById("overlay");
+const overlayText = document.getElementById("overlay-text");
 
 function playGame() {
-    let humanScore = 0
-    let computerscore = 0
+    rockB.addEventListener("click", function() {
+        playRound("rock", getComputerChoice())
+    })
 
-    function playRound() {
-        let hc = getHumanChoice()
-        let cc = getComputerChoice()
+    paperB.addEventListener("click", function() {
+        playRound("paper", getComputerChoice())
+    })
 
-        hc = hc.toLowerCase()
-        if (hc === cc) {
-        } else if(hc === "rock" && cc === "scissors") {
-            humanScore++
-        } else if(hc === "paper" && cc === "rock") {
-            humanScore++
-        } else if(hc === "scissors" && cc === "paper") {
-            humanScore++
-        } else {
-            computerscore++
-        }
-        console.log("Human score: " + humanScore + ", Computer Score: " + computerscore)
-    }
-    for (i = 0; i <= 5; i++) {
-        playRound()
-    }
+    scissorsB.addEventListener("click", function() {
+        playRound("scissors", getComputerChoice())
+    })
+
+    restart.addEventListener("click", function() {
+        reset()
+        overlay.classList.add("hidden")
+        overlay.classList.remove("show")
+    })
+
+
 }
 
 playGame()
+

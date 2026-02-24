@@ -3,11 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
 <body>
-
     <script src="script.js" defer></script>
+    <header>
+        <h1>Rock Paper Scissors</h1>
+    </header>
+    <main>
+        <div id="overlay" class="hidden">
+            <div id="overlay-text">YOU WIN</div>
+            <button id="restart">Restart</button>
+        </div>
+
+        <div class="game">
+            <p id="score">0 - 0</p>
+            
+            <div class="buttons">
+                <button id="rock"><p>🪨</p></button>
+                <button id="paper"><p>📝</p></button>
+                <button id="scissors"><p>✂️</p></button>
+            </div>
+
+            <p id="results">Press a button to start!</p>
+        </div>
+    </main>
     
 </body>
 </html>
