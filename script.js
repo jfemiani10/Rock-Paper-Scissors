@@ -12,18 +12,18 @@ function getComputerChoice() {
 function playRound(hc, cc) {
     hc = hc.toLowerCase()
     if (hc === cc) {
-        resultsP.textContent = "You tied"
+        resultsP.textContent = `You tied, you chose ${hc} computer chose ${cc}`
     } else if(hc === "rock" && cc === "scissors") {
-        resultsP.textContent = "You win"
+        resultsP.textContent = `You won, you chose ${hc} computer chose ${cc}`
         humanScore++
     } else if(hc === "paper" && cc === "rock") {
-        resultsP.textContent = "You win"
+        resultsP.textContent = `You won, you chose ${hc} computer chose ${cc}`
         humanScore++
     } else if(hc === "scissors" && cc === "paper") {
-        resultsP.textContent = "You win"
+        resultsP.textContent = `You won, you chose ${hc} computer chose ${cc}`
         humanScore++
     } else {
-        resultsP.textContent = "You lose"
+        resultsP.textContent = `You lost, you chose ${hc} computer chose ${cc}`
          computerscore++
     }
     console.log("Human score: " + humanScore + ", Computer Score: " + computerscore)
